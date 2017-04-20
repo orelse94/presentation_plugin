@@ -5,6 +5,7 @@ const presButton = {
   caption: 'pres',
   desc: 'pres1',
   execute: function () {
+    const widgetsObj = {};
     const widgetsArray = prism.activeDashboard.widgets.$$widgets;
     const widgets = widgetsArray
     .map((widget) => {
@@ -12,10 +13,12 @@ const presButton = {
       let dashId = widget.dashboardid;
       let title = widget.title;
       let desc = widget.desc;
-      return {id,dashId,title,desc}      
+      return {id,dashId,title,desc};
 
     });
-    console.log(widgets);
+
+    widgetsObj.widgets = widgets;
+    console.log(widgetsObj);
   },
   templateUrl: '',
 
