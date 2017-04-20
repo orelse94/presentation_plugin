@@ -20,7 +20,7 @@ const presButton = {
     widgetsObj.widgets = widgets;
     console.log(widgetsObj);
   },
-  templateUrl: '',
+  templateUrl: '/plugins/presentation_plugin/overlay.html',
 
 
 };
