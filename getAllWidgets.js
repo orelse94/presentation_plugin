@@ -1,4 +1,9 @@
-const $dom = prism.$injector.get('ux-controls.services.$dom');
+// const $dom = prism.$injector.get('ux-controls.services.$dom');
+
+function createOverlay(){
+  var overlayDiv = $('<div id="presentationOverlay" class="presentation_overlay"></div>');
+  $('body').append(overlayDiv);
+}
 
 const presButton = {
   id: 'pres',
@@ -19,10 +24,11 @@ const presButton = {
 
     widgetsObj.widgets = widgets;
     console.log(widgetsObj);
+
+    // templateUrl: '/plugins/presentation_plugin/overlay.html',
+    createOverlay();
+
   },
-  templateUrl: '/plugins/presentation_plugin/overlay.html',
-
-
 };
 
 prism.on('beforemenu',function (event, args) {

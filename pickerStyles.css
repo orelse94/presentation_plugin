@@ -1,4 +1,4 @@
-.overlay {
+.presentation_overlay {
   position: absolute;
   right: 0;
   left: 0;
@@ -6,6 +6,6 @@
   bottom: 0;
   z-index: 100;
   color: black;
-  font-size: 22; 
+  font-size: 22;
   opacity: 0.5;
 }
