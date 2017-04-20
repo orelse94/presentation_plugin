@@ -23,7 +23,7 @@ const presButton = {
   templateUrl: '',
 
 
-}
+};
 
 prism.on('beforemenu',function (event, args) {
   if (args.settings.name == 'dashboard') {
