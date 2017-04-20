@@ -2,12 +2,11 @@
 	name: "paletteGen",
 	source: [
 
-		"color-thief.min.js",
-		"paletteGen.js"
+
+		"getAllWidgets.js"
 	],
 
 	style: [
-		"paletteStyle.css"
 
 	]
 }
