@@ -5,7 +5,16 @@ const presButton = {
   caption: 'pres',
   desc: 'pres1',
   execute: function () {
-    const widgets = prism.activeDashboard.widgets.$$widgets;
+    const widgetsArray = prism.activeDashboard.widgets.$$widgets;
+    const widgets = widgetsArray
+    .map((widget) => {
+      let id = widget._id;
+      let dashId = widget.dashboardid;
+      let title = widget.title;
+      let desc = widget.desc;
+      return {id,dashId,title,desc}      
+
+    });
     console.log(widgets);
   },
   templateUrl: '',
