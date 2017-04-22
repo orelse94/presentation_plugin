@@ -62,6 +62,18 @@ function widgetsDivMaker(sizing){
   var dashboardId = sizing.dashboardId;
 
   var widgetContainer = $('<div class="presentation-widget-container" dashboardId="'+dashboardId+'" widgetId="'+widgetId+'" style="width:'+width+'px;height:'+height+'px;left:'+left+'px;top:'+top+'px;"></div>');
+  var titleTextbox = $('<input class="textbox" />');
+  titleTextbox.click(function (e) {
+    e.stopPropagation();
+  });
+  widgetContainer.append(titleTextbox);
+
+  var descriptionTextbox = $('<textarea class="textbox" />');
+  descriptionTextbox.click(function (e) {
+    e.stopPropagation();
+  });
+  widgetContainer.append(descriptionTextbox);
+
   widgetContainer.click(selectWidget);
   return widgetContainer;
 }

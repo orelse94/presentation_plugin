@@ -38,7 +38,18 @@
   position: absolute;
   cursor: pointer;
 }
+.presentation-widget-container .textbox {
+  visibility: hidden;
+  width: 100%;
+  height: 2.5em;
+}
+.presentation-widget-container textarea.textbox {
+  height: calc(100% - 2.5em);
+}
 
 .presentation-widget-container.selected {
   background-color: white;
+}
+.presentation-widget-container.selected .textbox {
+  visibility: visible;
 }
