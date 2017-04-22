@@ -1,13 +1,9 @@
 {
-	name: "paletteGen",
-	source: [
-
-
+	"name": "paletteGen",
+	"source": [
 		"getAllWidgets.js"
 	],
-
-	style: [
+	"style": [
     "pickerStyles.css"
-
 	]
 }

@@ -1,4 +1,4 @@
-.presentation_overlay {
+.presentation-overlay {
   position: absolute;
   right: 0;
   left: 0;
@@ -10,7 +10,35 @@
   opacity: 0.5;
 }
 
-.widgets {
+.presentation-overlay-menu {
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.presentation-overlay-menu-button{
+  width: 200px;
+  height: 50px;
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border: 1px solid black;
+  cursor: pointer;
+  font-size: 1.5em;
+}
+
+
+.presentation-widget-container {
   border: 2px dashed red;
   position: absolute;
+  cursor: pointer;
+}
+
+.presentation-widget-container.selected {
+  background-color: white;
 }
