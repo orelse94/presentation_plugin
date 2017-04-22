@@ -40,6 +40,11 @@ function createOverlayMenu(overlayDiv){
 function createOverlay(){
   console.clear();
   var overlayDiv = $('<div id="presentationOverlay" class="presentation-overlay"></div>');
+  var $mainScrollableSection = $('dashboard .content');
+  overlayDiv.on('scroll', function(e){
+    $mainScrollableSection.scrollTop($(this).scrollTop());
+  });
+
   findWidgetsPositions().map(function(widgetContainer){
     overlayDiv.append(widgetContainer);
   });
