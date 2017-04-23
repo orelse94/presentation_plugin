@@ -26,9 +26,24 @@ function createOverlayMenu(overlayDiv){
     selectedWidgets={};
     overlayDiv.remove();
   });
+  // var selectedWidgets = {};
   overlayMenuSave.click(function(){
-    console.log(selectedWidgets);
+    var index = 0;
     selectedWidgets={};
+    $('.presentation-widget-container.selected')
+    .each(function() {
+      var dashboardid = $(this).attr('dashboardid');
+      var widgetid = $(this).attr('widgetid');
+      var title = $('.title-container input.textbox').val();
+      var desc = $('.desc-container textarea.textbox').val();
+      var widgetData = {dashboardid,widgetid,title,desc};
+      console.log({widgetData});
+      // selectedWidgets.widgetid = widgetData;
+      selectedWidgets[index] = widgetData;
+      index ++;
+      return selectedWidgets;});
+    console.log(selectedWidgets);
+
     overlayDiv.remove();
   });
   overlayMenu.append(overlayMenuCancel);
@@ -60,19 +75,36 @@ function widgetsDivMaker(sizing){
   var top = sizing.position.top;
   var widgetId = sizing.widgetId;
   var dashboardId = sizing.dashboardId;
-
+  var title = prism.activeDashboard.widgets.$$widgets.filter(function(w) {return w.oid === widgetId;}).map(function(t) {return t.title;})[0];
+  var titleDescDiv = $('<div class="title-desc-container"></div>');
   var widgetContainer = $('<div class="presentation-widget-container" dashboardId="'+dashboardId+'" widgetId="'+widgetId+'" style="width:'+width+'px;height:'+height+'px;left:'+left+'px;top:'+top+'px;"></div>');
-  var titleTextbox = $('<input class="textbox" />');
+  var titleContainer = $('<div class="title-container"></div>');
+  var titleLabel = $('<label class="widgets-label" for="title">title</label>');
+  var titleTextbox = $('<input class="textbox" value='+title+'/>');
+
+  console.log({titleContainer});
+  titleContainer.append(titleLabel);
+  titleContainer.append(titleTextbox);
+
   titleTextbox.click(function (e) {
     e.stopPropagation();
   });
-  widgetContainer.append(titleTextbox);
+  titleDescDiv.append(titleContainer);
 
+  var descriptionContainer = $('<div class="desc-container"></div>');
   var descriptionTextbox = $('<textarea class="textbox" />');
+  var descriptionLabel = $('<label class="widgets-label" for="description">description</label>');
+  console.log({descriptionContainer});
+  descriptionContainer.append(descriptionLabel);
+  descriptionContainer.append(descriptionTextbox);
+  console.log('after  text');
+
   descriptionTextbox.click(function (e) {
     e.stopPropagation();
   });
-  widgetContainer.append(descriptionTextbox);
+  titleDescDiv.append(descriptionContainer);
+  widgetContainer.append(titleDescDiv);
+  console.log('append to widget');
 
   widgetContainer.click(selectWidget);
   return widgetContainer;

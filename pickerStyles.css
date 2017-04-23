@@ -38,18 +38,41 @@
   position: absolute;
   cursor: pointer;
 }
-.presentation-widget-container .textbox {
+.presentation-widget-container .title-desc-container{
   visibility: hidden;
   width: 100%;
   height: 2.5em;
 }
-.presentation-widget-container textarea.textbox {
+.presentation-widget-container input.textbox {
   height: calc(100% - 2.5em);
+  border: none;
+  /*margin-left: 10em;*/
 }
+
+.presentation-widget-container textarea.textbox {
+  height: 300px;
+  width: 400px;
+  box-shadow: 2px 2px 12px black;
+  background-color: white;
+  opacity: 0.7;
+
+}
+
 
 .presentation-widget-container.selected {
   background-color: white;
 }
-.presentation-widget-container.selected .textbox {
+.presentation-widget-container.selected .title-desc-container{
   visibility: visible;
+}
+.widgets-label{
+  vertical-align: top;
+  font-size: 1.5em;
+  display: inline;
+  margin-right: 4px;
+  margin-bottom: 3px;
+
+}
+.titleContainer{
+  /*padding: 4px;*/
 }
