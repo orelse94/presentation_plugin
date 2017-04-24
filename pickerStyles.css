@@ -5,13 +5,12 @@
   top: 0;
   bottom: 0;
   z-index: 100;
-  background-color: black;
-  opacity: 0.5;
+  /*opacity: 0.7;*/
   overflow-y: auto;
 }
 
 .presentation-overlay-menu {
-  position: absolute;
+  position: fixed;
   right: 0;
   left: 0;
   top: 0;
@@ -20,9 +19,10 @@
 }
 
 .presentation-overlay-menu-button{
-  width: 200px;
-  height: 50px;
-  margin: 20px;
+  width: 130px;
+  height: 40px;
+  margin: 10px;
+  margin-top: 66px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -32,11 +32,17 @@
   font-size: 1.5em;
 }
 
+.presentation-overlay-menu-button.save {
+  background-color: #65d049;
+}
+
 
 .presentation-widget-container {
-  border: 2px dashed red;
+  border: none;
   position: absolute;
   cursor: pointer;
+  background-color: white;
+  opacity: 0.7;
 }
 .presentation-widget-container .title-desc-container{
   visibility: hidden;
@@ -44,33 +50,54 @@
   height: 2.5em;
 }
 .presentation-widget-container input.textbox {
-  height: calc(100% - 2.5em);
+  height: calc(100% - 2em);
   border: none;
+  vertical-align: bottom;
+  box-shadow: 2px 2px 12px black;
+  background-color: white;
+  width: 70%;
+
   /*margin-left: 10em;*/
+  margin-left: 8%;
+
+}
+
+.desc-container {
+  margin-top: 5%;
+  height: 100%;
 }
 
 .presentation-widget-container textarea.textbox {
-  height: 300px;
-  width: 400px;
+  height: 90%;
+  width: 70%;
   box-shadow: 2px 2px 12px black;
   background-color: white;
-  opacity: 0.7;
+  /*vertical-align: bottom;*/
+  margin-left: 8%;
+
+  /*opacity: 0.7;*/
 
 }
 
 
 .presentation-widget-container.selected {
-  background-color: white;
+  visibility: visible;
+  background-color: transparent;
+  box-shadow: 2px 2px 1px #000000;
 }
 .presentation-widget-container.selected .title-desc-container{
   visibility: visible;
+  height: 90%;
 }
 .widgets-label{
+  text-shadow: 2px 2px 2px black;
   vertical-align: top;
+  width: 100px;
   font-size: 1.5em;
-  display: inline;
+  display: inline-flex;
   margin-right: 4px;
   margin-bottom: 3px;
+  margin-left: 1%;
 
 }
 .titleContainer{

@@ -20,7 +20,7 @@ function selectWidget(){
 
 function createOverlayMenu(overlayDiv){
   var overlayMenu = $('<div class="presentation-overlay-menu"></div>');
-  var overlayMenuSave = $('<div class="presentation-overlay-menu-button">Save</div>');
+  var overlayMenuSave = $('<div class="presentation-overlay-menu-button save">Save</div>');
   var overlayMenuCancel = $('<div class="presentation-overlay-menu-button">Cancel</div>');
   overlayMenuCancel.click(function(){
     selectedWidgets={};
@@ -80,7 +80,7 @@ function widgetsDivMaker(sizing){
   var widgetContainer = $('<div class="presentation-widget-container" dashboardId="'+dashboardId+'" widgetId="'+widgetId+'" style="width:'+width+'px;height:'+height+'px;left:'+left+'px;top:'+top+'px;"></div>');
   var titleContainer = $('<div class="title-container"></div>');
   var titleLabel = $('<label class="widgets-label" for="title">title</label>');
-  var titleTextbox = $('<input class="textbox" value='+title+'/>');
+  var titleTextbox = $('<input class="textbox" value="'+title+'"/>');
 
   console.log({titleContainer});
   titleContainer.append(titleLabel);
