@@ -50,7 +50,8 @@
   height: 2.5em;
 }
 .presentation-widget-container input.textbox {
-  height: calc(100% - 2em);
+  /*order: 2;*/
+  /*height: calc(100% - 2em);*/
   border: none;
   vertical-align: bottom;
   box-shadow: 2px 2px 12px black;
@@ -63,13 +64,15 @@
 }
 
 .desc-container {
+  order: 2;
   margin-top: 5%;
   height: 100%;
 }
 
 .presentation-widget-container textarea.textbox {
-  height: 90%;
-  width: 70%;
+  /*order: 2;*/
+  /*height: 80%;
+  width: 70%;*/
   box-shadow: 2px 2px 12px black;
   background-color: white;
   /*vertical-align: bottom;*/
@@ -86,10 +89,13 @@
   box-shadow: 2px 2px 1px #000000;
 }
 .presentation-widget-container.selected .title-desc-container{
+  display: flex;
+  flex-direction: column;
   visibility: visible;
-  height: 90%;
+  /*height: 90%;*/
 }
 .widgets-label{
+  order: 1;
   text-shadow: 2px 2px 2px black;
   vertical-align: top;
   width: 100px;
@@ -100,6 +106,10 @@
   margin-left: 1%;
 
 }
-.titleContainer{
+.title-container{
+  order: 1;
+  /*display: flex;
+  flex-direction: row;*/
+  height: 20%;
   /*padding: 4px;*/
 }
