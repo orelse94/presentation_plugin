@@ -29,20 +29,38 @@ function createOverlayMenu(overlayDiv){
   // var selectedWidgets = {};
   overlayMenuSave.click(function(){
     var index = 0;
+    // console.log("hello")
     selectedWidgets={};
-    $('.presentation-widget-container.selected')
-    .each(function() {
-      var dashboardid = $(this).attr('dashboardid');
-      var widgetid = $(this).attr('widgetid');
-      var title = $('.title-container input.textbox').val();
-      var desc = $('.desc-container textarea.textbox').val();
+    // $('.presentation-widget-container.selected')
+    // .each(function() {
+    //   var dashboardid = $(this).attr('dashboardid');
+    //   var widgetid = $(this).attr('widgetid');
+    //   var title = $('.title-desc-container .title-container input.textbox').val();
+    //   var desc = $('.title-desc-container .desc-container textarea.textbox').val();
+    //
+    //   // selectedWidgets.widgetid = widgetData;
+    //   console.log({title});
+    //   selectedWidgets[index] = widgetData;
+    //   index ++;
+    //   console.log({selectedWidgets});
+    //   return selectedWidgets;});
+    var widgetHolder = $('.presentation-widget-container.selected');
+
+    $.map(widgetHolder, function (e) {
+      var title =  $(e).find('.title-desc-container .title-container input.textbox').val();
+      var desc =  $(e).find('.title-desc-container .desc-container textarea.textbox').val();
+      var dashboardid = $(e).attr('dashboardid');
+      var widgetid =  $(e).attr('widgetid');
       var widgetData = {dashboardid,widgetid,title,desc};
-      console.log({widgetData});
-      // selectedWidgets.widgetid = widgetData;
       selectedWidgets[index] = widgetData;
       index ++;
-      return selectedWidgets;});
+      return index;
+    });
+
     console.log(selectedWidgets);
+    // console.log({title});
+
+    // console.log({selectedWidgets});
 
     overlayDiv.remove();
   });
@@ -82,7 +100,6 @@ function widgetsDivMaker(sizing){
   var titleLabel = $('<label class="widgets-label" for="title">title</label>');
   var titleTextbox = $('<input class="textbox" value="'+title+'"/>');
 
-  console.log({titleContainer});
   titleContainer.append(titleLabel);
   titleContainer.append(titleTextbox);
 
@@ -94,17 +111,14 @@ function widgetsDivMaker(sizing){
   var descriptionContainer = $('<div class="desc-container"></div>');
   var descriptionTextbox = $('<textarea class="textbox" />');
   var descriptionLabel = $('<label class="widgets-label" for="description">description</label>');
-  console.log({descriptionContainer});
   descriptionContainer.append(descriptionLabel);
   descriptionContainer.append(descriptionTextbox);
-  console.log('after  text');
 
   descriptionTextbox.click(function (e) {
     e.stopPropagation();
   });
   titleDescDiv.append(descriptionContainer);
   widgetContainer.append(titleDescDiv);
-  console.log('append to widget');
 
   widgetContainer.click(selectWidget);
   return widgetContainer;
