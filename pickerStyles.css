@@ -1,4 +1,5 @@
 .presentation-overlay {
+  font-family: opensans-regular;
   position: absolute;
   right: 0;
   left: 0;
@@ -44,46 +45,46 @@
   opacity: 0.7;
 }
 .presentation-widget-container .title-desc-container{
-  margin: 20px;
+  padding: 20px;
   visibility: hidden;
   display: flex;
   flex-direction: column;
-  height: 80%;
+  height: 40%;
+  background-color: white;
+  box-shadow: 1px 1px 2px #a3a3a3;
 }
 .presentation-widget-container input.textbox {
+  padding-left: 2px;
   border: none;
   border: 1px solid black;
-  flex:3;
-  /*box-shadow: 2px 2px 12px black;*/
+  flex:4;
 }
 
 .desc-container {
   display: flex;
-  flex: 4;
+  flex: 2;
 }
 
 .presentation-widget-container textarea.textbox {
-  /*box-shadow: 2px 2px 12px black;*/
   border: 1px solid black;
-  flex:3;
+  flex:4;
 }
 
 
 .presentation-widget-container.selected {
   visibility: visible;
-  box-shadow: 2px 1px 5px #000000;
+  background-color: transparent;
   opacity: 1;
 }
 .presentation-widget-container.selected .title-desc-container{
   visibility: visible;
+  opacity: 0.95;
 }
 .widgets-label{
-  flex: 1;
+  flex: 2;
 }
 .title-container{
   display: flex;
-  margin-bottom: 20px;
   flex: 1;
-  /*flex-direction: row;*/
-  /*padding: 4px;*/
+  margin-bottom: 8px;
 }
