@@ -1,12 +1,12 @@
 .presentation-overlay {
-  font-family: opensans-regular;
+  font-family: opensansregular;
   position: absolute;
-  right: 0;
+  /*right: 0;
   left: 0;
-  top: 0;
+  top: 0;*/
   bottom: 0;
   z-index: 100;
-  overflow-y: auto;
+  overflow-y: scroll;
 }
 
 .presentation-overlay-menu {
@@ -50,14 +50,19 @@
   display: flex;
   flex-direction: column;
   height: 40%;
+  min-height: 100px;
   background-color: white;
   box-shadow: 1px 1px 2px #a3a3a3;
 }
 .presentation-widget-container input.textbox {
+  max-height: 35px;
+  min-height: 20px;
   padding-left: 2px;
   border: none;
   border: 1px solid black;
   flex:4;
+  font-family: opensansregular;
+
 }
 
 .desc-container {
@@ -68,6 +73,8 @@
 .presentation-widget-container textarea.textbox {
   border: 1px solid black;
   flex:4;
+  font-family: opensansregular;
+
 }
 
 
@@ -79,9 +86,11 @@
 .presentation-widget-container.selected .title-desc-container{
   visibility: visible;
   opacity: 0.95;
+  /*margin: 1em;*/
 }
 .widgets-label{
   flex: 2;
+  font-size: 11pt;
 }
 .title-container{
   display: flex;

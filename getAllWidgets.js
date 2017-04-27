@@ -22,10 +22,12 @@ function createOverlayMenu(overlayDiv){
   var overlayMenu = $('<div class="presentation-overlay-menu"></div>');
   var overlayMenuSave = $('<div class="presentation-overlay-menu-button save">Save</div>');
   var overlayMenuCancel = $('<div class="presentation-overlay-menu-button">Cancel</div>');
+  // console.log({overlayTop,overlayLeft,overlayRight});
   overlayMenuCancel.click(function(){
     selectedWidgets={};
     overlayDiv.remove();
   });
+
   // var selectedWidgets = {};
   overlayMenuSave.click(function(){
     var index = 0;
@@ -72,7 +74,11 @@ function createOverlayMenu(overlayDiv){
 
 function createOverlay(){
   console.clear();
-  var overlayDiv = $('<div id="presentationOverlay" class="presentation-overlay"></div>');
+  var overlayTop = $('#prism-toolbar').position().top + $('#prism-toolbar').height();
+  var overlayLeft = $('#prism-toolbar').position().left;
+  var overlayRight = $('#prism-toolbar').position().left + $('prism-toolbar').width();
+  // var overlayMenu = $('<div class="presentation-overlay"></div>');
+  var overlayDiv = $('<div id="presentationOverlay" class="presentation-overlay"  style="top:'+overlayTop+'px;left:'+overlayLeft+'px;right:'+overlayRight+'px;""></div>');
   var $mainScrollableSection = $('dashboard .content');
   overlayDiv.on('scroll', function(e){
     $mainScrollableSection.scrollTop($(this).scrollTop());
@@ -81,6 +87,7 @@ function createOverlay(){
   findWidgetsPositions().map(function(widgetContainer){
     overlayDiv.append(widgetContainer);
   });
+
   overlayDiv.append(createOverlayMenu(overlayDiv));
   $('body').append(overlayDiv);
 }
@@ -89,8 +96,8 @@ function createOverlay(){
 function widgetsDivMaker(sizing){
   var width = sizing.width;
   var height = sizing.height;
-  var left = sizing.position.left;
-  var top = sizing.position.top;
+  var left = sizing.position.left - $('#prism-toolbar').position().left;
+  var top = sizing.position.top - $('#prism-toolbar').position().top - $('#prism-toolbar').height();
   var widgetId = sizing.widgetId;
   var dashboardId = sizing.dashboardId;
   var title = prism.activeDashboard.widgets.$$widgets.filter(function(w) {return w.oid === widgetId;}).map(function(t) {return t.title;})[0];
@@ -145,38 +152,19 @@ function findWidgetsPositions() {
   return widgetsContainers;
 }
 
-var presButton = {
-  id: 'pres',
-  caption: 'pres',
-  desc: 'pres1',
-  execute: function () {
-    // var widgetsObj = {};
-    // var widgetsArray = window.prism.activeDashboard.widgets.$$widgets;
-    // var widgets = widgetsArray
-    // .map(function(widget) {
-    //   var id = widget._id;
-    //   var dashId = widget.dashboardid;
-    //   var title = widget.title;
-    //   var desc = widget.desc;
-    //   return {
-    //     id:id,
-    //     dashId:dashId,
-    //     title:title,
-    //     desc:desc,
-    //   };
-    //
-    // });
-    // window.O = $;
-    // widgetsObj.widgets = widgets;
-    // console.log(widgetsObj);
+var presButton = $('<div class="btn-immutable btn-action btn-settings fl-icon-container" style="display: block; text-shadow: 1px 1px 10px yellow; height: 100%; width: 135px; padding-top: 5px; margin: 2px;text-align: center; color: grey;">Create Presentation</div>');
+presButton.click(createOverlay);
+// {
+//   id: 'pres',
+//   caption: 'pres',
+//   desc: 'pres1',
+//   execute: function () {
+//     createOverlay();
+//   }
+// ,
+// };
 
-    createOverlay();
-  },
-};
-
-window.prism.on('beforemenu',function (event, args) {
-  if (args.settings.name == 'dashboard') {
-    args.settings.items.push(presButton);
-  }
+window.prism.on('beforedashboardloaded',function () {
+  $('.actions-box').append(presButton);
 
 });
