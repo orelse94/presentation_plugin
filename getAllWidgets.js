@@ -19,6 +19,7 @@ function selectWidget(){
 }
 
 function createOverlayMenu(overlayDiv){
+  $('.btn-immutable.btn-action.btn-settings.fl-icon-container').css('visibility','hidden');
   var overlayMenu = $('<div class="presentation-overlay-menu"></div>');
   var overlayMenuSave = $('<div class="presentation-overlay-menu-button save">Save</div>');
   var overlayMenuCancel = $('<div class="presentation-overlay-menu-button">Cancel</div>');
@@ -26,26 +27,15 @@ function createOverlayMenu(overlayDiv){
   overlayMenuCancel.click(function(){
     selectedWidgets={};
     overlayDiv.remove();
+    $('.btn-immutable.btn-action.btn-settings.fl-icon-container').css('visibility','visible');
+
   });
 
   // var selectedWidgets = {};
   overlayMenuSave.click(function(){
     var index = 0;
-    // console.log("hello")
     selectedWidgets={};
-    // $('.presentation-widget-container.selected')
-    // .each(function() {
-    //   var dashboardid = $(this).attr('dashboardid');
-    //   var widgetid = $(this).attr('widgetid');
-    //   var title = $('.title-desc-container .title-container input.textbox').val();
-    //   var desc = $('.title-desc-container .desc-container textarea.textbox').val();
-    //
-    //   // selectedWidgets.widgetid = widgetData;
-    //   console.log({title});
-    //   selectedWidgets[index] = widgetData;
-    //   index ++;
-    //   console.log({selectedWidgets});
-    //   return selectedWidgets;});
+
     var widgetHolder = $('.presentation-widget-container.selected');
 
     $.map(widgetHolder, function (e) {
@@ -60,11 +50,10 @@ function createOverlayMenu(overlayDiv){
     });
 
     console.log(selectedWidgets);
-    // console.log({title});
-
-    // console.log({selectedWidgets});
 
     overlayDiv.remove();
+    $('.btn-immutable.btn-action.btn-settings.fl-icon-container').css('visibility','visible');
+
   });
   overlayMenu.append(overlayMenuCancel);
   overlayMenu.append(overlayMenuSave);
@@ -154,15 +143,7 @@ function findWidgetsPositions() {
 
 var presButton = $('<div class="btn-immutable btn-action btn-settings fl-icon-container" style="display: block; text-shadow: 1px 1px 10px yellow; height: 100%; width: 135px; padding-top: 5px; margin: 2px;text-align: center; color: grey;">Create Presentation</div>');
 presButton.click(createOverlay);
-// {
-//   id: 'pres',
-//   caption: 'pres',
-//   desc: 'pres1',
-//   execute: function () {
-//     createOverlay();
-//   }
-// ,
-// };
+
 
 window.prism.on('beforedashboardloaded',function () {
   $('.actions-box').append(presButton);

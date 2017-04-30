@@ -91,9 +91,15 @@
 .widgets-label{
   flex: 2;
   font-size: 11pt;
+  font-weight: bold;
 }
+
 .title-container{
   display: flex;
   flex: 1;
   margin-bottom: 8px;
+}
+
+#hidden-presentation-button {
+  visibility: hidden;
 }
