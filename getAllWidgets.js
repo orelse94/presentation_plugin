@@ -20,6 +20,7 @@ function selectWidget(){
 
 function createOverlayMenu(overlayDiv){
   $('.btn-immutable.btn-action.btn-settings.fl-icon-container').css('visibility','hidden');
+
   var overlayMenu = $('<div class="presentation-overlay-menu"></div>');
   var overlayMenuSave = $('<div class="presentation-overlay-menu-button save">Save</div>');
   var overlayMenuCancel = $('<div class="presentation-overlay-menu-button">Cancel</div>');
@@ -31,7 +32,6 @@ function createOverlayMenu(overlayDiv){
 
   });
 
-  // var selectedWidgets = {};
   overlayMenuSave.click(function(){
     var index = 0;
     selectedWidgets={};
@@ -50,10 +50,18 @@ function createOverlayMenu(overlayDiv){
     });
 
     console.log(selectedWidgets);
-
+    // save the ebj;
+    var dlAnchorElemDiv = $('<a id="downloadAnchorElem" style="display:none"></a>');
+    var dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(selectedWidgets));
+    dlAnchorElemDiv.attr('href',dataStr);
+    dlAnchorElemDiv.attr('download', 'presentation.json');
+    overlayMenu.append(dlAnchorElemDiv);
+    var dlAnchorElem = $('#downloadAnchorElem');
+    dlAnchorElem[0].click();
     overlayDiv.remove();
-    $('.btn-immutable.btn-action.btn-settings.fl-icon-container').css('visibility','visible');
 
+
+    $('.btn-immutable.btn-action.btn-settings.fl-icon-container').css('visibility','visible');
   });
   overlayMenu.append(overlayMenuCancel);
   overlayMenu.append(overlayMenuSave);
@@ -67,6 +75,7 @@ function createOverlay(){
   var overlayLeft = $('#prism-toolbar').position().left;
   var overlayRight = $('#prism-toolbar').position().left + $('prism-toolbar').width();
   // var overlayMenu = $('<div class="presentation-overlay"></div>');
+
   var overlayDiv = $('<div id="presentationOverlay" class="presentation-overlay"  style="top:'+overlayTop+'px;left:'+overlayLeft+'px;right:'+overlayRight+'px;""></div>');
   var $mainScrollableSection = $('dashboard .content');
   overlayDiv.on('scroll', function(e){

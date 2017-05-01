@@ -7,6 +7,7 @@
   bottom: 0;
   z-index: 100;
   overflow-y: scroll;
+  border-left: 3px solid #f2f2f2;
 }
 
 .presentation-overlay-menu {
@@ -82,10 +83,14 @@
   visibility: visible;
   background-color: transparent;
   opacity: 1;
+
 }
 .presentation-widget-container.selected .title-desc-container{
   visibility: visible;
-  opacity: 0.95;
+  opacity: 0.93;
+  border-right: 3px solid #f2f2f2;
+  background-color: #f8f5f5;
+
   /*margin: 1em;*/
 }
 .widgets-label{
