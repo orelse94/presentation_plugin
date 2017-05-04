@@ -54,7 +54,7 @@ function createOverlayMenu(overlayDiv){
     var dlAnchorElemDiv = $('<a id="downloadAnchorElem" style="display:none"></a>');
     var dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(selectedWidgets));
     dlAnchorElemDiv.attr('href',dataStr);
-    dlAnchorElemDiv.attr('download', 'presentation.json');
+    dlAnchorElemDiv.attr('download', 'presentation.sprs');
     overlayMenu.append(dlAnchorElemDiv);
     var dlAnchorElem = $('#downloadAnchorElem');
     dlAnchorElem[0].click();
